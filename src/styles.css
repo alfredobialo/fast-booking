@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "font-awesome/css/font-awesome.min.css";
+
+
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+body{
+  font-family: "Lucida Sans", "Microsoft Sans Serif", Verdana, Arial, sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+div.container
+{
+  padding:3rem;
+  width: 85%;
+
+}
+div.bg-gradient{
+  background-image: radial-gradient( circle, rgba(51, 43, 61, 1) 4%,
+  rgba(54, 45, 74, 1) 13%, rgba(65, 53, 120, 1) 40%, rgba(110, 66, 122, 1) 55%,
+  rgba(119, 69, 122, 1) 71%, rgba(32, 33, 40, 1) 100% );
+  filter: blur(5px);
+}
