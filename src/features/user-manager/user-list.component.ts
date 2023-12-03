@@ -2,25 +2,26 @@
 import {UserManagerService} from "./user-manager-service";
 
 @Component({
-  template :`
-    <h3>User List</h3>
+  template: `
+    <h3>All Users</h3>
     <hr>
-    <table cellpadding="15px" cellspacing="0" border="0">
-      <thead>
-        <tr>
-          <th>S/N</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-        </tr>
+    <table cellpadding="15px" cellspacing="0" border="0" class="table table-borderless user-list-table">
+      <thead class="table-header-group">
+      <tr class="bg-blend-hard-light ">
+        <th><span class="fa-user fa"></span> S/N</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
       </thead>
       <tbody>
       @for(user of userData; track user.id){
-        <tr [class]="{'bg-gray' : $odd}">
+      <tr [class]="{'bg-gray-700 text-gray-50' : $odd}" class="table-row">
           <td>{{$index + 1}}</td>
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
-          <td><a href="mailto:{{user.email}}" target="_blank" ><sup>Send Mail</sup> &nbsp; {{user.email}}</a></td>
+          <td><a href="mailto:{{user.email}}" target="_blank" ><sup style="color:red"><span class="fa fa-mail-forward"></span></sup> &nbsp;&nbsp;
+      {{user.email}}</a></td>
         </tr>
       }
 
@@ -32,21 +33,22 @@ import {UserManagerService} from "./user-manager-service";
   selector:"fb-user-list",
   styles: [`
 
-    td {
+    table.user-list-table td {
       min-width: 20%;
       text-align: left;
     }
 
-    th {
+    table.user-list-table th {
       text-align: left;
       color: #0c5682;
     }
 
-    table {
+    table.user-list-table {
       margin: 1.5rem 0;
     }
-    .bg-gray{
-      background-color: rgba(208,203,182,0.66);
+
+    .bg-gray {
+      background-color: rgba(230, 227, 227, 0.72);
     }
 
   `]
