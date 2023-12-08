@@ -7,8 +7,8 @@
       <h1 class="text-red-700 text-3xl">{{newsTitle}}</h1>
       @if(showContent){
       <div class="news-content">
-            <div class="drop-shadow-md bg-gradient-to-tl from-green-200 to-red-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ipsam ullam vero. Ab aliquam animi consequatur cupiditate dicta, ea inventore sit sunt vel veniam?</div>
-            <div class="drop-shadow-lg border-radius-lg bg-gradient-to-tr from-cyan-300 to-purple-600 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid animi aperiam architecto corporis culpa dolore, inventore laborum maio velit vitae, voluptate! Natus, voluptatem.</div>
+            <div class="drop-shadow-md bg-gradient-to-bl from-gray-100 to-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ipsam ullam vero. Ab aliquam animi consequatur cupiditate dicta, ea inventore sit sunt vel veniam?</div>
+            <div class="drop-shadow-lg border-radius-lg bg-gradient-to-bl from-gray-100 to-gray-400 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid animi aperiam architecto corporis culpa dolore, inventore laborum maio velit vitae, voluptate! Natus, voluptatem.</div>
             <div class="drop-shadow-md bg-gray-600 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque aut beatae cum eaque eos facere id incidunt, ipsam iste laboriosam maxime nporibus!</div>
         </div>
         <div class="p-2"><button class="btn btn-link" (click)="hideNewsContent()">Hide</button></div>
