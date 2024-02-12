@@ -7,6 +7,7 @@ import {MultiSelectModule} from "primeng/multiselect";
 import {FormsModule} from "@angular/forms";
 
 @Component({
+  imports: [DropdownModule, InputGroupModule, ButtonModule, MultiSelectModule, FormsModule,],
   template: `
     <h1 class="font-light">Prime NG</h1>
     <p-button type="primary">Hello Button</p-button>
@@ -15,7 +16,7 @@ import {FormsModule} from "@angular/forms";
      <p-button label="Loading custom icon" [loading]="loading" loadingIcon="pi pi-bell" (onClick)="load()"></p-button>
    </div>
     <p-multiSelect
-      emptyMessage="No Item"
+      emptyMessage="No Item" [display]="'chip'"
       [options]="['Apples', 'Oranges', 'Mangoes']" ></p-multiSelect>
     <h3>All Users</h3>
 
@@ -34,7 +35,7 @@ import {FormsModule} from "@angular/forms";
       </thead>
       <tbody>
       @for(user of userData; track user.id){
-      <tr [class]="{'bg-gray-700 text-gray-50' : $odd}" class="table-row">
+      <tr [class]="{'text-gray-700 text-gray-50' : $odd}" class="table-row">
           <td>{{$index + 1}}</td>
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
@@ -50,7 +51,7 @@ import {FormsModule} from "@angular/forms";
 
   `,
   standalone:true,
-  imports: [DropdownModule, InputGroupModule, ButtonModule, MultiSelectModule, FormsModule,],
+
   selector:"fb-user-list",
   styles: [`
 
@@ -83,6 +84,9 @@ export class UserListComponent implements OnInit {
     const dataResponse = this.userManager.getUsers();
     this.userData = dataResponse.data;
     console.log(dataResponse);
+    if(true){
+      //do something
+    }
   }
 
   load() {

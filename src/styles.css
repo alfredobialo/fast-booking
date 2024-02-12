@@ -1,6 +1,6 @@
-/*@tailwind base;
-@tailwind components;
-@tailwind utilities;*/
+
+@import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400;1,500;1,600&family=Satisfy&display=swap');
+
 
 /*
 *{
@@ -12,11 +12,7 @@ body{
   /*font-family: "Lucida Sans", "Microsoft Sans Serif", Verdana, Arial, sans-serif;
   font-size: 1.3rem;
   line-height: 1.4;*/
-}
-div.container
-{
-  padding:3rem;
-  width: 85%;
+  font-family:'Krub', 'Satisfy', cursive, 'Open Sans', sans-serif;
 
 }
 div.bg-gradient{
@@ -24,4 +20,7 @@ div.bg-gradient{
   rgba(54, 45, 74, 1) 13%, rgba(65, 53, 120, 1) 40%, rgba(110, 66, 122, 1) 55%,
   rgba(119, 69, 122, 1) 71%, rgba(32, 33, 40, 1) 100% );
   filter: blur(5px);
+}
+button.p-button{
+  border-radius: 6px !important;
 }
