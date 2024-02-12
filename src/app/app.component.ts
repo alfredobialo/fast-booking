@@ -2,24 +2,25 @@ import { Component, VERSION } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {UserListComponent} from "../features/user-manager/user-list.component";
-import {NewsPageComponent} from "./pages/news-page";
+import {CounterComponent} from "../features/counter/counterComponent";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, UserListComponent,NewsPageComponent],
+  imports: [CommonModule, RouterOutlet, UserListComponent, CounterComponent],
   template: `
     <div class="container">
-      <h1 class="text-3xl font-bold underline">Angular v{{ngVersion}}</h1>
-      <div class="mb-3 row">
-        <div class="col-md-8  col-sm-12 col-xl-6">
-          <fb-news-page [showContent]="true" newsTitle="Learning Tailwind Css"/>
+      <h1 class="fw-bold ">Angular v{{ngVersion}}</h1>
+      <div class="row">
+        <div class="col-3">
+          <counter-component />
         </div>
-
-
+        <div class="col-9">
+          <fb-user-list />
+        </div>
       </div>
-      <fb-user-list />
+
     </div>`
 })
 export class AppComponent {
