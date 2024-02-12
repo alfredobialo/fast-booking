@@ -5,6 +5,7 @@ import {InputGroupModule} from "primeng/inputgroup";
 import {ButtonModule} from "primeng/button";
 import {MultiSelectModule} from "primeng/multiselect";
 import {FormsModule} from "@angular/forms";
+import {CounterStore} from "../counter/counterStore";
 
 @Component({
   imports: [DropdownModule, InputGroupModule, ButtonModule, MultiSelectModule, FormsModule,],
@@ -30,7 +31,7 @@ import {FormsModule} from "@angular/forms";
         <th><span class="fa-user fa"></span> S/N</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Email</th>
+        <th>Email <span class="text-success">'Counter * 2' :{{counter()}}</span></th>
       </tr>
       </thead>
       <tbody>
@@ -80,6 +81,7 @@ export class UserListComponent implements OnInit {
   userData : any[]  = [];
   text ="Hello Text Editor";
   loading: boolean = false;
+  counter = inject(CounterStore).doubleCounter;
   ngOnInit(): void {
     const dataResponse = this.userManager.getUsers();
     this.userData = dataResponse.data;

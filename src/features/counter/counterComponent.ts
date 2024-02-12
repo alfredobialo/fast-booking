@@ -1,11 +1,12 @@
-﻿import {Component, computed, signal} from '@angular/core';
+﻿import {Component, computed, inject, signal} from '@angular/core';
+import {CounterStore} from "./counterStore";
 
 @Component({
   standalone:true,
   selector: 'counter-component',
   template: `
     <div class="d-flex flex-column justify-content-center align-items-center counter p-5" >
-      <h4>Counter with Signal</h4>
+      <h4>Counter App</h4>
       <h1 class="text-white fw-bold m-4">{{counterValue()}}</h1>
       <div class="d-flex mb-3 justify-content-center">
         <button class="btn btn-outline-light btn-lg" (click)="increment()">Increase</button>
@@ -37,22 +38,19 @@
 })
 
 export class CounterComponent  {
-  counterValue = signal<number>(0);
-  doubleCounter = computed(() => {
-    if(this.counterValue() > 0 )
-        return this.counterValue() * 2;
-    return 0;
-  });
+  store = inject(CounterStore);
+  counterValue = this.store.counter;
+  doubleCounter = this.store.doubleCounter;
 
   constructor() {
   }
   increment(){
-    this.counterValue.update(x => x +1);
+    this.store.increment();
     console.log("Counter Increment :" ,this.counterValue(), "Double Counter: ", this.doubleCounter());
   }
 
   decrement(){
-    this.counterValue.update(x => x - 1);
+    this.store.decrement();
     console.log("Counter Decrement:" ,this.counterValue(), "Double Counter: ", this.doubleCounter());
   }
 }
