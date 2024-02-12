@@ -1,4 +1,4 @@
-﻿import {Component, computed, inject, signal} from '@angular/core';
+﻿import {Component, inject} from '@angular/core';
 import {CounterStore} from "./counterStore";
 
 @Component({
@@ -9,8 +9,9 @@ import {CounterStore} from "./counterStore";
       <h4>Counter App</h4>
       <h1 class="text-white fw-bold m-4">{{counterValue()}}</h1>
       <div class="d-flex mb-3 justify-content-center">
-        <button class="btn btn-outline-light btn-lg" (click)="increment()">Increase</button>
-        <button class="btn btn-outline-light btn-lg" (click)="decrement()">Decrease</button>
+        <button class="btn btn-outline-light " (click)="increment()">Increase</button>
+        <button class="btn btn-outline-light " (click)="decrement()">Decrease</button>
+        <button class="btn btn-outline-light " (click)="resetCounter()">Reset</button>
       </div>
       <div class="">
         <p class="lead muted">Double : {{doubleCounter()}}</p>
@@ -52,5 +53,9 @@ export class CounterComponent  {
   decrement(){
     this.store.decrement();
     console.log("Counter Decrement:" ,this.counterValue(), "Double Counter: ", this.doubleCounter());
+  }
+
+  resetCounter(){
+    this.store.reset();
   }
 }

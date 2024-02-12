@@ -25,6 +25,11 @@ export const CounterStore = signalStore(
         patchState(state, s => {
           return {counter  : s.counter - 1};
         })
+      },
+      reset(){
+        patchState(state, s => {
+          return {counter  : 0};
+        })
       }
     }
   })
