@@ -13,10 +13,10 @@ import {CounterComponent} from "../features/counter/counterComponent";
     <div class="container">
       <h1 class="fw-bold ">Angular v{{ngVersion}}</h1>
       <div class="row">
-        <div class="col-3">
+        <div class="col-xs-12 col-sm-5 col-lg-4 col-xl-3">
           <counter-component />
         </div>
-        <div class="col-9">
+        <div class="col-xs-12 col-sm-7 col-lg-8 col-xl-9">
           <fb-user-list />
         </div>
       </div>

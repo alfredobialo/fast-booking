@@ -1,12 +1,13 @@
 ﻿import {Injectable} from "@angular/core";
+import {delay, of} from "rxjs";
+import {IApiQueryCriteria, PagedApiResponseData, UserDataModel} from "../model/ApiResponseModel";
 
 @Injectable({
   providedIn:'root'
 })
 export class UserManagerService {
 
-  private allUsers = {
-    "usePagination": true,
+  private allUsers:PagedApiResponseData<UserDataModel[]> = {
     "pageSize": 20,
     "currentPage": 1,
     "totalRecord": 21,
@@ -134,14 +135,18 @@ export class UserManagerService {
       }
     ],
     "success": true,
-    "message": null,
+    "message": "User Data returned",
     "hasErrors": false,
     "errors": [],
     "code": 200
   }
 
   getUsers(){
-    return (this.allUsers);
+    return of(this.allUsers).pipe(delay(4000));
+  }
+
+   getUsersAsPromise(criteria : IApiQueryCriteria){
+    return this.getUsers().toPromise();
   }
 
 }

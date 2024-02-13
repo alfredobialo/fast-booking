@@ -1,14 +1,14 @@
 ﻿import {patchState, signalStore, withComputed, withMethods, withState} from "@ngrx/signals";
 import {computed} from "@angular/core";
 
-const initialState = {counter : 0};
+const initialState = {counter: 0};
 
 export const CounterStore = signalStore(
-  {providedIn : 'root'},
+  {providedIn: 'root'},
   withState(initialState),
   withComputed(state => ({
-    doubleCounter : computed( () => {
-      if(state.counter() > 0)
+    doubleCounter: computed(() => {
+      if (state.counter() > 0)
         return state.counter() * 2;
 
       return 0;
@@ -16,19 +16,19 @@ export const CounterStore = signalStore(
   })),
   withMethods(state => {
     return {
-      increment(){
+      increment() {
         patchState(state, s => {
-          return {counter  : s.counter + 1};
+          return {counter: s.counter + 5};
         })
       },
-      decrement(){
+      decrement() {
         patchState(state, s => {
-          return {counter  : s.counter - 1};
+          return {counter: s.counter - 5};
         })
       },
-      reset(){
+      reset() {
         patchState(state, s => {
-          return {counter  : 0};
+          return initialState;
         })
       }
     }
