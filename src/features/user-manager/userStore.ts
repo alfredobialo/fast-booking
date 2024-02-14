@@ -2,7 +2,7 @@
 import {UserManagerService} from "./user-manager-service";
 import {computed, inject} from "@angular/core";
 import {rxMethod} from "@ngrx/signals/rxjs-interop";
-import {map, pipe, switchMap, tap} from "rxjs";
+import {exhaustMap, pipe, switchMap, tap} from "rxjs";
 import {tapResponse} from "@ngrx/component-store";
 import {IApiQueryCriteria, PagedApiResponseData, UserDataModel} from "../model/ApiResponseModel";
 
@@ -42,10 +42,10 @@ export const UserStore = signalStore(
     const userService = inject(UserManagerService);
 
     return {
-      getUsersRx: rxMethod<IApiQueryCriteria>(
+      getUsers: rxMethod<IApiQueryCriteria>(
         pipe(
           tap( (x) => patchState(store, {processing: true})),
-          switchMap((x) => {
+          exhaustMap((x) => {
             return userService.getUsers(x).pipe(
               tapResponse({
                 next: d => {
@@ -63,20 +63,15 @@ export const UserStore = signalStore(
           })
         )
       ),
-      async getUsers() {
-        patchState(store, {processing: true})
-        const d = await userService.getUsersAsPromise(store.requestCriteria());
-        console.log(d?.data);
-        patchState(store, {
-          processing: false, userDataResponse: d
-        });
+      setCriteria(criteria : IApiQueryCriteria){
+        patchState(store, {requestCriteria : criteria})
       }
     }
   }),
   withHooks({
     onInit(store) {
-      //store.getUsers();
-      store.getUsersRx(store.requestCriteria);
+      console.log("User Store Hooks OnInit Called");
+      store.getUsers(store.requestCriteria);
     }
   }))
 ;

@@ -16,7 +16,7 @@ import {UserDataModel} from "../model/ApiResponseModel";
     <h1 class="font-light">Prime NG</h1>
     <p-button type="primary">Hello Button</p-button>
     <div class="py-3.5">
-      <p-button label="Submit" [loading]="processing()" (onClick)="load()"></p-button>
+      <p-button label="Submit" (onClick)="load()"></p-button>
       <p-button label="Loading custom icon" [loading]="processing()" loadingIcon="pi pi-bell" (onClick)="load()"></p-button>
     </div>
     <p-multiSelect
@@ -92,7 +92,8 @@ export class UserListComponent  {
 
 
   load() {
-    const response = this.userStore.getUsers();
-    console.log("Load Called", response);
+    this.userStore.setCriteria({ sortBy : "name desc, thenBy email asc", currentPage : 1, pageSize : 20});
+    this.userStore.getUsers(this.criteria);
+    console.log("Load Called");
   }
 }
