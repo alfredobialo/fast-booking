@@ -26,7 +26,7 @@ const userState: IUserStoreModel = {
   userDataResponse: defApiResponse,
   selectedUserId: null,
   processing: false,
-  requestCriteria: {pageSize: 10, currentPage: 1}
+  requestCriteria: {pageSize: 10, currentPage: 1,sortBy :"name asc"}
 };
 export const UserStore = signalStore(
   {providedIn: "root"},
@@ -40,22 +40,22 @@ export const UserStore = signalStore(
   }),
   withMethods(store => {
     const userService = inject(UserManagerService);
-    patchState(store, {processing: true});
+
     return {
-      getUsersRx: rxMethod<PagedApiResponseData<UserDataModel[]>>(
+      getUsersRx: rxMethod<IApiQueryCriteria>(
         pipe(
+          tap( (x) => patchState(store, {processing: true})),
           switchMap((x) => {
-            return userService.getUsers().pipe(
+            return userService.getUsers(x).pipe(
               tapResponse({
                 next: d => {
-                  console.log(d.data);
-                  patchState(store, {
-                    processing: false, userDataResponse: d
-                  });
+                  console.log("RxMethod Response => " ,d.data);
+                  patchState(store, {userDataResponse: d});
 
                 }, error: (err) => {
                   console.log(err)
-                }
+                },
+                finalize : () => { patchState(store, { processing : false})}
 
               })
             )
@@ -75,7 +75,8 @@ export const UserStore = signalStore(
   }),
   withHooks({
     onInit(store) {
-      store.getUsers();
+      //store.getUsers();
+      store.getUsersRx(store.requestCriteria);
     }
   }))
 ;

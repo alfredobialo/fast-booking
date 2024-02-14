@@ -9,7 +9,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   template: `
     <div class="d-flex flex-column justify-content-center align-items-center counter p-5">
       <h4>Counter App</h4>
-      <h1 class="text-white fw-bold m-4" [@counter-trigger]="animIncrement ? 'increment' : 'decrement'">
+      <h1 class=" fw-bold m-4" [@counter-trigger]="animIncrement ? 'increment' : 'decrement'">
         <span>
           {{ counterValue()}}
         </span></h1>
@@ -19,7 +19,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
         <button class="btn btn-outline-light " (click)="resetCounter()">Reset</button>
       </div>
       <div class="">
-        <p class="lead muted">Double : {{ doubleCounter() }}</p>
+        <p class="lead text-muted">Double : {{ doubleCounter() }}</p>
       </div>
 
     </div>

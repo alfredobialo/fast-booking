@@ -141,12 +141,13 @@ export class UserManagerService {
     "code": 200
   }
 
-  getUsers(){
+  getUsers(criteria :  IApiQueryCriteria){
+    console.log("Criteria Sent :", criteria);
     return of(this.allUsers).pipe(delay(4000));
   }
 
    getUsersAsPromise(criteria : IApiQueryCriteria){
-    return this.getUsers().toPromise();
+    return this.getUsers(criteria).toPromise();
   }
 
 }
