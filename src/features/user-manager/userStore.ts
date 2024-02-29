@@ -2,7 +2,7 @@
 import {UserManagerService} from "./user-manager-service";
 import {computed, inject} from "@angular/core";
 import {rxMethod} from "@ngrx/signals/rxjs-interop";
-import {exhaustMap, pipe, switchMap, tap} from "rxjs";
+import {exhaustMap, pipe, tap} from "rxjs";
 import {tapResponse} from "@ngrx/component-store";
 import {IApiQueryCriteria, PagedApiResponseData, UserDataModel} from "../model/ApiResponseModel";
 
