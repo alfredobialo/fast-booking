@@ -13,16 +13,17 @@ import {UserDataModel} from "../model/ApiResponseModel";
 @Component({
   imports: [DropdownModule, InputGroupModule, ButtonModule, MultiSelectModule, FormsModule, ProgressBarModule,],
   template: `
-    <h1 class="font-light">Prime NG</h1>
-    <p-button type="primary">Hello Button</p-button>
-    <div class="py-3.5">
+    <h1 class="text-green-600 text-5xl font-extrabold p-3 ">Prime NG</h1>
+
+    <div class="my-3 d-flex justify-content-between">
       <p-button label="Submit" (onClick)="load()"></p-button>
       <p-button label="Loading custom icon" [loading]="processing()" loadingIcon="pi pi-bell" (onClick)="load()"></p-button>
     </div>
-    <p-multiSelect
-      emptyMessage="No Item" [display]="'chip'"
-      [options]="['Apples', 'Oranges', 'Mangoes']"></p-multiSelect>
-    <h3>All Users</h3>
+    <p-multiSelect [panelStyle]="{minWidth : '300px'}" [style]="{minWidth : '300px'}"
+                   [showClear]="true"
+      emptyMessage="No Item" [display]="'chip'" placeholder="Select Fruits"
+      [options]="['Apples', 'Oranges', 'Mangoes','Cucumber','Pineapple', 'Gauva', 'Cheeries']"></p-multiSelect>
+    <h3 class="my-5">All Users</h3>
     @if(processing()){
       <div> <p-progressBar mode="indeterminate" [style]="{height:'6px'}"></p-progressBar></div>
     }
@@ -30,9 +31,9 @@ import {UserDataModel} from "../model/ApiResponseModel";
       <!--<p-editor [(ngModel)]="text" [style]="{ height: '320px' }"></p-editor>-->
     </div>
     <hr>
-    <table cellpadding="15px" cellspacing="0" border="0" class="table table-borderless user-list-table">
-      <thead class="table-header-group">
-      <tr class="bg-light ">
+    <table cellpadding="15px" cellspacing="0" border="0" class="table table-borderless user-list-table table-hover">
+      <thead class="">
+      <tr class="bg-primary-subtle ">
         <th><span class="fa-user fa"></span> S/N</th>
         <th>First Name</th>
         <th>Last Name</th>
@@ -41,7 +42,7 @@ import {UserDataModel} from "../model/ApiResponseModel";
       </thead>
       <tbody>
         @for (user of userData(); track user.id) {
-          <tr [class]="{'text-gray-700 text-gray-50' : $odd}" class="table-row">
+          <tr [class]="{'bg-green-400':$odd}" class="table-row">
             <td>{{ $index + 1 }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>

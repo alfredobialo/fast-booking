@@ -30,16 +30,7 @@
                 "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "bundleName": "bootstrap-css"
               },
-              {
-                "inject" : true,
-                "input": "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-                "bundleName": "primeng-theme-css"
-              },
-              {
-                "inject" : true,
-                "input": "node_modules/primeng/resources/primeng.min.css",
-                "bundleName": "primeng-css"
-              },
+
               {
                 "inject" : true,
                 "input": "node_modules/font-awesome/css/font-awesome.min.css",

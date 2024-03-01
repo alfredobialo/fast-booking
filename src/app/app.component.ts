@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {UserListComponent} from "../features/user-manager/user-list.component";
 import {CounterComponent} from "../features/counter/counterComponent";
+import {NewsPageComponent} from "./pages/news-page";
+import {PrimeNGConfig} from "primeng/api";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, UserListComponent, CounterComponent],
+  imports: [CommonModule, RouterOutlet, UserListComponent, CounterComponent, NewsPageComponent],
   template: `
     <div class="container">
       <h1 class="fw-bold ">Angular v{{ngVersion}}</h1>
@@ -18,6 +20,7 @@ import {CounterComponent} from "../features/counter/counterComponent";
         </div>
         <div class="col-xs-12 col-sm-7 col-lg-8 col-xl-9">
           <fb-user-list />
+          <fb-news-page />
         </div>
       </div>
 
@@ -26,4 +29,10 @@ import {CounterComponent} from "../features/counter/counterComponent";
 export class AppComponent {
   ngVersion = VERSION.full;
   title = 'fast-booking';
+  constructor(private primeConfig : PrimeNGConfig) {
+
+  }
+  ngOnInit(){
+    this.primeConfig.ripple = true;
+  }
 }
